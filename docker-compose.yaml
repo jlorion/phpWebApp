@@ -1,26 +1,19 @@
 version: "3"
 
 services:
-  php:
-    image: php:apache
-    ports:
-      - 8080:80
-    volumes: 
-      - ./:/var/www/html
-    depends_on:
-      - postgres
-  postgres:
-    image: postgres:latest
-    container_name: postgresDB
-    restart: always
-    environment: 
-      POSTGRES_USER: phpWebDev
-      POSTGRES_PASSWORD: secret
-    ports: 
-      - 5432:5432
-    volumes:
-      - ./data:/var/lib/postgresql/data
-     
+   db:
+      image: postgres:latest
+      container_name: db 
+      restart: always
+      environment: 
+        POSTGRES_USER: phpWebDev
+        POSTGRES_PASSWORD: secret
+        POSTGRES_DB: laravel
+      ports: 
+        - 5432:5432
+      volumes:
+        - ./data:/var/lib/postgresql/data
+       
         
 
 
