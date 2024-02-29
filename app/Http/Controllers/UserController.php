@@ -14,7 +14,7 @@ class UserController extends Controller
 
 
     public function create(){
-        return view('register');
+        return view('users.register');
 
     }
     public function store(Request $request){
@@ -43,7 +43,7 @@ class UserController extends Controller
     }
     public function login(){
 
-        return view('login');
+        return view('users.login');
 
     }
     public function logout(Request $request){
@@ -52,6 +52,9 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
 
+    }
+    public function user(){
+        return view('users.edit');
     }
 }
 

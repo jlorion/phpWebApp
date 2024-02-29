@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('location');
             $table->integer('price');
             $table->string('contacts');
-            $table->double('longtitude', 4, 8);
-            $table->double('latitude', 4, 8);
+            $table->double('longtitude', 180, 8);
+            $table->double('latitude', 180, 8);
             $table->longText('Description');
             $table->json('images')->nullable();
             $table->timestamps();
