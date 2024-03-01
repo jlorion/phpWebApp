@@ -1,21 +1,23 @@
 <x-layout>
     <body>
-    
+
         <div style="display: flex; align-items: center; justify-content: center; ">
-            <form action="/listing/edit" method="post">
+            <form action="/listings/{{$listing->id}}/edit" method="post">
                 @csrf
                 <h1>title </h1>
                 <input type="text" name="title" value="{{$listing->title}}"><br>
                 <h1>price</h1>
                 <input type="text" name="price" value="{{$listing->price}}"><br>
+                <h1>Location</h1>
+                <input type="text" name="location" value="{{$listing->location}}"><br>
+
                 <!-- contacts design here-->
                 <h2>contacts</h2>
                 <input type="text" name="contacts" value="{{$listing->contacts}}">
                 <!--text are description pwede ra nimo e balot ug div or someshit-->
                 <h3>Description</h3>
-                {{$listing->Description}}
-                
-                <textarea type="text" name="description" rows="5"> {{$listing->Description}} </textarea>
+
+                <textarea type="text" name="Description" rows="5" >{{$listing->Description}} </textarea>
                 <!-- map and map script kung mag edit ka sa map ⬇️ dri lang sa div e edit-->
                 <div id="map" class="mb-3" style="height: 300px; width: 544px;">
                 </div>
@@ -42,7 +44,7 @@
                     })
                 </script>
                 <!---->
-                
+
                 <!---pwede nani dli hilabtan kay invisble mani--->
                 <input type="hidden" step="any" class="form-control" step="any" placeholder="latitude"
                     aria-label="latitude" name="latitude" id="lat" value="{{$listing->latitude}}">
@@ -54,11 +56,11 @@
                 <button type="button" onclick="addItem()">Add shit</button>
                 <br>
                 <ul id="itemList">
-                    
+
                     <!-- Items will be added here -->
                 </ul>
                 <!---->
-                
+
                 <input type="submit" value="Submit">
 
             </form>
@@ -70,7 +72,7 @@
 
         // Get the value of the item input
         var itemValue = itemInput.value.trim();
-        
+
         // Check if the input is not empty
         if (itemValue !== "") {
             // Create a new list item
@@ -82,7 +84,7 @@
             inputField.setAttribute("name", "images[]")
             inputField.setAttribute("value", itemValue);
             inputField.setAttribute("readonly", "true"); // Make it readonly to prevent user from editing
-            
+
             // Create a remove button
             var removeButton = document.createElement("button");
             removeButton.textContent = "Remove";
@@ -114,7 +116,7 @@
         inputField.setAttribute("name", "images[]")
         inputField.setAttribute("value", itemValue);
         inputField.setAttribute("readonly", "true"); // Make it readonly to prevent user from editing
-        
+
         // Create a remove button
         var removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
@@ -130,14 +132,14 @@
 
         // Append the new list item to the item list
         itemList.appendChild(listItem);
-        
+
     }
-    
+
     @foreach(json_decode($listing->images) as $value)
         addExistingItem("{{$value}}")
-        
+
     @endforeach
     </script>
     </body>
-    
+
 </x-layout>

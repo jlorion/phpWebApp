@@ -17,9 +17,9 @@
             <form action="/user/edit" action="post">
                 @csrf
                 <h3>Former Passowrd:</h3>
-                <input type="password" name="password">
+                <input type="password" name="old_password">
                 <h2>Password: </h2>
-                <input type="password" name="new_password"><br><br>
+                <input type="password" name="password"><br><br>
                 <h2>Password Confirmation: </h2>
                 <input type="password" name="password_confirmation"><br><br>
                 <input type="submit" value="Submit">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -38,7 +39,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/')->with('message', 'you are now logged in');
         }
-        return back();
+        return back()->with('message', 'incorrect password')->with('type', 'error');
 
     }
     public function login(){
@@ -55,6 +56,27 @@ class UserController extends Controller
     }
     public function user(){
         return view('users.edit');
+    }
+    public function update(Request $request, User $user){
+
+        if($request->has("name")){
+            $data=['name'=>$request->name];
+             DB::table('users')->where('id', auth()->id())->update($data);
+            return back();
+        }
+        if( $request->has("email")){
+            $data=['email'=>$request->email];
+            DB::table('users')->where('id', auth()->id())->update($data);
+            return back();
+        }
+        if($request->has('password')){//pending wla ko kabalo ngano dli nako ni ma update
+            $formValiate = $request->validate([
+                'old_password' => 'required',
+                'password' => 'required|confirmed',
+            ]);
+            dd($formValiate);
+        }
+
     }
 }
 

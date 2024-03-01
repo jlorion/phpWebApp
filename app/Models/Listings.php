@@ -11,14 +11,22 @@ class listings extends Model
 
     protected $fillable =[
 
+        'user_id',
         'title',
         'price',
+        'location',
         'contacts',
         'longtitude',
         'latitude',
-        'description',
+        'Description',
         'images',
     ];
+
+    public function scopeFilter($query,  array $filter){
+        if ($filter['search'] ?? false) {
+            $query->where('location', 'like', '%'.request('search').'%')->orWhere('title', 'like', '%'.request('search').'%');
+        }
+    }
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');

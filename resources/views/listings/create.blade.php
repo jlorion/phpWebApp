@@ -7,12 +7,15 @@
                 <input type="text" name="title"><br>
                 <h1>price</h1>
                 <input type="text" name="price"><br>
+                <h1>location</h1>
+                <input type="text" name="location"><br>
+
                 <!-- contacts design here-->
                 <h2>contacts</h2>
                 <input type="text" name="contacts">
                 <!--text are description pwede ra nimo e balot ug div or someshit-->
                 <h3>description</h3>
-                <textarea type="text" name="description" rows="5"></textarea>
+                <textarea type="text" name="Description" rows="5"></textarea>
                 <!-- map and map script kung mag edit ka sa map ⬇️ dri lang sa div e edit-->
                 <div id="map" class="mb-3" style="height: 300px; width: 544px;">
                 </div>
@@ -39,7 +42,7 @@
                     })
                 </script>
                 <!---->
-                
+
                 <!---pwede nani dli hilabtan kay invisble mani--->
                 <input type="hidden" step="any" class="form-control" step="any" placeholder="latitude"
                     aria-label="latitude" name="latitude" id="lat">
@@ -54,7 +57,7 @@
                     <!-- Items will be added here -->
                 </ul>
                 <!---->
-                
+
                 <input type="submit" value="Submit">
 
             </form>
@@ -66,7 +69,7 @@
 
         // Get the value of the item input
         var itemValue = itemInput.value.trim();
-        
+
         // Check if the input is not empty
         if (itemValue !== "") {
             // Create a new list item
@@ -78,7 +81,7 @@
             inputField.setAttribute("name", "images[]")
             inputField.setAttribute("value", itemValue);
             inputField.setAttribute("readonly", "true"); // Make it readonly to prevent user from editing
-            
+
             // Create a remove button
             var removeButton = document.createElement("button");
             removeButton.textContent = "Remove";
@@ -101,5 +104,5 @@
     }
     </script>
     </body>
-    
+
 </x-layout>

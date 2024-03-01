@@ -7,13 +7,14 @@
     <h1>{{$listing->title}}</h1>
     <h3>price</h3>
     {{$listing->price}}
+    <h3>location</h3>
+    {{$listing->location}}
     <h3> contacts</h3>
     {{$listing->contacts}}
     <h3>description</h3>
     {{$listing->Description}}
     <h3>MAP</h3>
     <div id="map" style="width: 256px; height: 256px; border-color:red; border-width:10px;">
-                <!--  <iframe width="544" height="300" frameborder="0" style="border:0" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBmIwbHivFRB9G8bnd9tuFCKWWeFNg6VWc&center=<%=listing.lat%>,<%=listing.lng %>&zoom=18&maptype=satellite" frameborder="0"></iframe> -->
     </div>
     <script>
                 let map = L.map('map', {
