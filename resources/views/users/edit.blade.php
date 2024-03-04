@@ -1,30 +1,44 @@
 <x-layout>
-    <body>
-        <div style="display: flex; align-items: center; justify-content: center; ">
-            <h3>Edit things</h3>
-            <form action="/user/edit" method="post">
-                @csrf
-                <h1>UserName: </h1>
-                <input type="text" name="name"><br>
-                <input type="submit" value="Submit">
-            </form>
-            <form action="/user/edit" method="post">
-                @csrf
-                <h1>Email: </h1>
-                <input type="text" name="email"><br>
-                <input type="submit" value="Submit">
-            </form>
-            <form action="/user/edit" action="post">
-                @csrf
-                <h3>Former Passowrd:</h3>
-                <input type="password" name="old_password">
-                <h2>Password: </h2>
-                <input type="password" name="password"><br><br>
-                <h2>Password Confirmation: </h2>
-                <input type="password" name="password_confirmation"><br><br>
-                <input type="submit" value="Submit">
-            </form>
-
+    
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3 class="text-center mb-4">Edit Profile</h3>
+                <form action="/user/edit" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Username:</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+                <form action="/user/edit" method="post" class="mt-4">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+                <form action="/user/edit" method="post" class="mt-4">
+                    @csrf
+                    <div class="form-group">
+                        <label for="old_password">Former Password:</label>
+                        <input type="password" class="form-control" id="old_password" name="old_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation">Password Confirmation:</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+            </div>
         </div>
-    </body>
+    </div>
+
+    
 </x-layout>

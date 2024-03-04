@@ -19,19 +19,19 @@ use App\Models\Listings;
 
 Route::middleware('auth')->group(function(){
 
-Route::get('/edit', [UserController::class,'user']);
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-//edit user
-Route::get('/user/edit', [UserController::class, 'user']);
-Route::post('/user/edit', [UserController::class, 'update']);
-//delete listing
-Route::delete('/listings/{listing}', [ListingsController::class, 'destroy']);
-//edit listing
-Route::get('/listings/{listing}/edit', [ListingsController::class, 'edit']);
-Route::post('/listings/{listing}/edit', [ListingsController::class, 'update']);
-//create listing
-Route::get('/listing/create', [ListingsController::class, 'create']);
-Route::post('/listing/create', [ListingsController::class, 'store']);
+    Route::get('/edit', [UserController::class,'user']);
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    //edit user
+    Route::get('/user/edit', [UserController::class, 'user']);
+    Route::post('/user/edit', [UserController::class, 'update']);
+    //delete listing
+    Route::delete('/listings/{listing}/edit', [ListingsController::class, 'destroy']);
+    //edit listing
+    Route::get('/listings/{listing}/edit', [ListingsController::class, 'edit']);
+    Route::post('/listings/{listing}/edit', [ListingsController::class, 'update']);
+    //create listing
+    Route::get('/listing/create', [ListingsController::class, 'create']);
+    Route::post('/listing/create', [ListingsController::class, 'store']);
 });
 Route::post('/login', [UserController::class, 'authenticate']);
 Route::get('/login',[UserController::class, 'login'])->name('login')->middleware('guest');
@@ -42,7 +42,7 @@ Route::post('/signup', [UserController::class, 'store']);
 Route::get('/', [ListingsController::class, 'index']);
 //show specific listing
 Route::get('/listings/{listing}', [ListingsController::class, 'show']);
-//show create
+
 
 
 

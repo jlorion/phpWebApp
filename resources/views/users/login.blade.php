@@ -1,14 +1,26 @@
 <x-layout>
 
-    <div style="display: flex; align-items: center; justify-content: center; ">
-        <form action="/login" method="POST">
-            @csrf
-            <h1>Email: </h1>
-            <input type="text" name="email"><br> <h2>Password: </h2>
-            <input type="password" name="password"><br><br>
-            <input type="submit" value="Submit">
-
-        </form>
+    <div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h1 class="text-center mb-4">Login</h1>
+                <form action="/login" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+
 
 </x-layout>
