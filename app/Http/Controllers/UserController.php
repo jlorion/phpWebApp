@@ -51,7 +51,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('message', "you are now logged out");
 
     }
     public function user(){
@@ -60,11 +60,13 @@ class UserController extends Controller
     public function update(Request $request, User $user){
 
         if($request->has("name")){
+            $request->validate(["name" => "required"]);
             $data=['name'=>$request->name];
-             DB::table('users')->where('id', auth()->id())->update($data);
+            DB::table('users')->where('id', auth()->id())->update($data);
             return back();
         }
         if( $request->has("email")){
+            $request->validate(["email" => ['required','email', Rule::unique('users','email')]]);
             $data=['email'=>$request->email];
             DB::table('users')->where('id', auth()->id())->update($data);
             return back();

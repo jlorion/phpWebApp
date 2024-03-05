@@ -4,20 +4,45 @@
             <div class="col-md-6">
                 <form action="/listing/create" method="post">
                     @csrf
-                    <h1>Title</h1>
-                    <input type="text" class="form-control mb-3" name="title" >
+                    <div>
+                        <h1>Title</h1>
+                        <input type="text" class="form-control mb-3" name="title" >
+                        @error('title')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
                     
-                    <h1>Price</h1>
-                    <input type="text" class="form-control mb-3" name="price" >
+                    <div>
+                        <h1>Price</h1>
+                        <input type="text" class="form-control mb-3" name="price" >
+                        @error('price')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
                     
+                    <div>
                     <h1>Location</h1>
                     <input type="text" class="form-control mb-3" name="location" >
+                        @error('location')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    <div>
 
+                    <div>
                     <h2>Contacts</h2>
                     <input type="text" class="form-control mb-3" name="contacts" >
+                        @error('contacts')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
                     
+                    <div>
                     <h3>Description</h3>
                     <textarea class="form-control mb-3" name="Description" rows="5"></textarea>
+                        @error('Description')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
                     
                     <!-- Map -->
                     <div id="map" class="mb-3" style="height: 300px;"></div>
@@ -45,22 +70,25 @@
                     </script>
                     <!---->
 
-                    <!---pwede nani dli hilabtan kay invisble mani--->
                     <input type="hidden" step="any" class="form-control" step="any" placeholder="latitude"
                         aria-label="latitude" name="latitude" id="lat">
                     <input type="hidden" step="any" class="form-control" placeholder="longtitude"
                         aria-label="longtitude" name="longtitude" id="lng">
-
                     <!-- Add Images -->
-                    <div class="input-group mb-3">
-                        <input type="text" id="item" class="form-control" placeholder="Image URL">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" onclick="addItem()">Add Image</button>
+                    <div>
+                        <div class="input-group mb-3">
+                            <input type="text" id="item" class="form-control" placeholder="Image URL">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" onclick="addItem()">Add Image</button>
+                            </div>
                         </div>
+                        <ul id="itemList" class="list-group mb-3">
+                            <!-- Items will be added here -->
+                        </ul>
+                            @error('images[]')
+                                <p class="text-danger">{{$message}}</p>
+                            @enderror
                     </div>
-                    <ul id="itemList" class="list-group mb-3">
-                        <!-- Items will be added here -->
-                    </ul>
                     <!---->
 
                     <button type="submit" class="btn btn-primary mb-5">Submit</button>

@@ -9,6 +9,9 @@
                     <div class="form-group">
                         <label for="name">Username:</label>
                         <input type="text" class="form-control" id="name" name="name">
+                        @error('name')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
@@ -17,6 +20,9 @@
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" name="email">
+                        @error('email')
+                            <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
@@ -34,7 +40,7 @@
                         <label for="password_confirmation">Password Confirmation:</label>
                         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
                 </form>
             </div>
         </div>
