@@ -62,15 +62,19 @@
                 </ul>
                 
                 <!-- Submit Button -->
-                <div class="d-flex justify-content-between mb-5">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger">Delete</button>
-                
-
-                </div>
+                <button type="submit" id="submit-edit-form" style="background:transparent;border:none"></button>
             </form>
+
+                <div class="d-flex justify-content-between mb-5">
+                    <button type="submit" class="btn btn-primary" onclick="document.getElementById('submit-edit-form').click()">Update</button>
+                    <form action="/listing/delete" method="post">
+                        <div>
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">Delete</button> 
+                        </div>
+                    </form>
+                </div>
         </div>
     </div>
 </div>

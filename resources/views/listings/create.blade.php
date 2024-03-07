@@ -97,12 +97,35 @@
             </div>
         </div>
         <script>
+        function checkCookie(cookieName){
+            let hold = null;
+            let cookieString = document.cookie.split(';');
+            cookieString.forEach(cookie=>{
+                let parts = cookie.split("=");
+                console.log(parts[0].trim() == cookieName);
+                if(parts[0].trim() == cookieName){
+                    hold = JSON.parse(parts[1]);
+                }
+            })
+            return hold;
+        }
+
         function addItem() {
             var itemInput = document.getElementById("item");
             var itemList = document.getElementById("itemList");
 
             // Get the value of the item input
             var itemValue = itemInput.value.trim();
+            if(checkCookie("imgArr") != null) {
+                arr = checkCookie("imgArr");
+                //console.log(itemValue);
+                arr.push(`${itemValue}`);
+                strArr = JSON.stringify(arr);
+                document.cookie = `imgArr=${strArr}`;
+            }else{
+                document.cookie = `imgArr=["${itemValue}"]`;
+                console.log(document.cookie);
+            }
 
             // Check if the input is not empty
             if (itemValue !== "") {
@@ -144,7 +167,57 @@
                 itemInput.value = "";
             }
         }
+        function addExistingItem(itemValue) {
+            
+            
+            // Check if the input is not empty
+            if (itemValue !== "") {
+                // Create a new list item
+                var listItem = document.createElement("li");
+                listItem.setAttribute("class", "list-group-item ");
+
+                // Create an input field
+                var inputField = document.createElement("input");
+                inputField.setAttribute("type", "hidden");
+                inputField.setAttribute("name", "images[]")
+                inputField.setAttribute("value", itemValue);
+                inputField.setAttribute("readonly", "true"); // Make it readonly to prevent user from editing
+
+                var imgField = document.createElement("img");
+                imgField.src = itemValue;
+                imgField.classList.add('img-thumbnail');
+
+                // Create a remove button
+                var removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.classList.add("btn", "btn-warning");
+                removeButton.type = "button"; // Set button type to prevent form submission
+
+                // Add click event listener to remove the item when remove button is clicked
+                removeButton.addEventListener("click", function() {
+                    listItem.remove();
+                });
+                // Append the input field to the list item
+                listItem.appendChild(inputField);
+                listItem.appendChild(imgField);
+                listItem.appendChild(document.createElement("br"));
+                listItem.appendChild(removeButton);
+
+                // Append the new list item to the item list
+                itemList.appendChild(listItem);
+
+                // Clear the input field
+                itemInput.value = "";
+            }
+        }
+        //populate = checkCookie("imgArr");
+        //addExistingItem(populate[0]);
+        //addExistingItem(populate[1]);
+        
+
+
         </script>
+
     </div>
 
 </x-layout>

@@ -7,16 +7,16 @@
                 <h1 class="text-center mb-4">Login</h1>
                 <form action="/login" method="POST">
                     @csrf
-                    <div class="form-group">
+                    <div class="form-floating mb-3">               
+                        <input type="text" class="form-control" id="email" name="email" placeholder="haha">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email">
                         @error('email')
                             <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    <div class="form-floating mb-3">                        
+                        <input type="password" class="form-control" id="password" name="password" placeholder="haha">
                         <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password">
                         @error('password')
                             <p class="text-danger">{{$message}}</p>
                         @enderror

@@ -43,6 +43,8 @@ Route::get('/', [ListingsController::class, 'index']);
 //show specific listing
 Route::get('/listings/{listing}', [ListingsController::class, 'show']);
 
-
+Route::get('/about', function(){
+    return view('about');
+});
 
 

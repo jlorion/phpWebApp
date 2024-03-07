@@ -7,34 +7,35 @@
                     <h1 class="text-center mb-4">Sign Up</h1>
                     <form action="/signup" method="post">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-floating mb-3">                            
+                            <input type="text" class="form-control" id="name" name="name" placeholder="haha">
                             <label for="name">Username:</label>
-                            <input type="text" class="form-control" id="name" name="name">
                             @error('name')
                             <p class="text-danger">{{$message}}</p>
                         @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="haha">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email">
                             @error('email')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
-                        <div class="form-group">
+                         <div class="form-floating mb-3">                         
+                            <input type="password" class="form-control" id="password" name="password" placeholder="haha">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password">
                             @error('password')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
-                        <div class="form-group">
+                         <div class="form-floating mb-3">         
+                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="haha">
                             <label for="password_confirmation">Password Confirmation:</label>
-                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                             @error('password_confirmation')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
                         </div>
+                       
                         <button type="submit" class="btn btn-primary btn-block mt-4">Submit</button>
                     </form>
                 </div>
